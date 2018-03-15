@@ -92,10 +92,8 @@ KeyboardEffects.prototype = {
 
             let blocks = Math.round(amount / 10);
             blocks = blocks == 0 ? 1 : (blocks > 10 ? block == 10 : blocks);
-            console.log((blue << 16) | (green) << 8 | (red << 0))
-            for (i = 0; i < blocks; i++)
+            for(i = 0; i < blocks; i++)
                 this.keys[1][i + 2] = 0x01000000 | (blue << 16) | (green) << 8 | (red << 0);
-            console.log('setting health to ' + blocks)
             chromaSDK.createKeyboardEffect("CHROMA_CUSTOM_KEY", {
                 "color": color,
                 "key": this.keys

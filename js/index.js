@@ -35,7 +35,6 @@ function checkChromaSDKConnection() {
     $.get("http://localhost:54235/razer/chromasdk").done(function () {
             chromaSDK.init();
             callback(true, false);
-            setStaticKeys();
         })
         .fail(function () {
             callback(false, false);
@@ -78,10 +77,6 @@ function setStaticKeys() {
     keyboardEffect.setStaticKeys();
 }
 
-function wim(a, b) {
-    keyboardEffect.setStaticColor(a, b);
-}
-
 function checkData() {
     $.get("/pull").done(function (data) {
             data = JSON.parse(data);
@@ -100,4 +95,7 @@ $(function () {
     setInterval(function () {
         checkData();
     }, 500);
+    setTimeout(function() {
+        setStaticKeys();
+    },500);
 });
