@@ -1,0 +1,12 @@
+
+div.custom-header{
+    padding: 15px 0;
+}
+footer,
+div.custom-header{
+    background: #f4f4f4;
+}
+footer div.content{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
