@@ -17,3 +17,13 @@ footer div.content{
 .form-check{
     padding-bottom: 5px;
 }
+
+div.logo{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+div.logo img{
+    width: 80px;
+}
