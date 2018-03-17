@@ -112,11 +112,27 @@ KeyboardEffects.prototype = {
             "key": this.keys
         });
     },
-    setStaticKeys: function (a, l) {
-        this.keys[4][3] = 0x01000000 | 0xf4c842; //z
-        this.keys[2][2] = 0x01000000 | 0xf4c842; //q
-        this.keys[3][3] = 0x01000000 | 0xf4c842; //s
-        this.keys[3][4] = 0x01000000 | 0xf4c842; //d
+    setStaticKeys:function(azerty) {
+        //Reset all
+        this.keys[4][3] = this.blackout;
+        this.keys[2][2] = this.blackout;
+        this.keys[3][3] = this.blackout;
+        this.keys[3][4] = this.blackout;
+        this.keys[2][5] = this.blackout;
+        this.keys[3][2] = this.blackout;
+
+        //Set correct keys
+        if(azerty){
+            this.keys[4][3] = 0x01000000 | 0xf4c842; //z
+            this.keys[2][2] = 0x01000000 | 0xf4c842; //q
+            this.keys[3][3] = 0x01000000 | 0xf4c842; //s
+            this.keys[3][4] = 0x01000000 | 0xf4c842; //d
+        }else{
+            this.keys[2][5] = 0x01000000 | 0xf4c842; //w
+            this.keys[3][2] = 0x01000000 | 0xf4c842; //a
+            this.keys[3][3] = 0x01000000 | 0xf4c842; //s
+            this.keys[3][4] = 0x01000000 | 0xf4c842; //d
+        }
 
         chromaSDK.createKeyboardEffect("CHROMA_CUSTOM_KEY", {
             "color": this.generalColor,

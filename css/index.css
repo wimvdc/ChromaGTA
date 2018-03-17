@@ -10,3 +10,10 @@ footer div.content{
     margin-top: 25px;
     margin-bottom: 25px;
 }
+.on-off-settings{
+    margin: 20px 0;
+}
+
+.form-check{
+    padding-bottom: 5px;
+}

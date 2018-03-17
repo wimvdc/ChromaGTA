@@ -84,7 +84,10 @@ function callback(data, webscript) {
 }
 
 function setStaticKeys() {
-    keyboardEffect.setStaticKeys();
+    keyboardEffect.setStaticKeys(settings.getAzerty());
+    $("input#azerty").change(function(){
+        keyboardEffect.setStaticKeys(settings.getAzerty());
+    });
 }
 
 function checkData() {
