@@ -1,33 +1,43 @@
 var chromaSDK = new ChromaSDK();
 var keyboardEffect = new KeyboardEffects();
+var settings = new Settings();
 
 function sleep(ms) {
     var currentTime = new Date().getTime();
-    while (currentTime + ms >= new Date().getTime()) {}
+    while(currentTime + ms >= new Date().getTime()){}
 }
 
 function police(lvl) {
-    if (lvl != window.currentWantedLevel) {
+    if(!settings.getWanted())
+        lvl = 0;
+    
+    if(lvl != window.currentWantedLevel){
         window.currentWantedLevel = lvl;
-        if (undefined != window.wantedLevelIntervalID) {
+        if(undefined != window.wantedLevelIntervalID)
             clearInterval(window.wantedLevelIntervalID);
-        }
+
         keyboardEffect.setWantedLevel(lvl);
     }
 }
 
 function health(amount) {
-    if (amount != window.healthAmount) {
+    if(!settings.getHealth())
+        amount = -1;
+    if(amount != window.healthAmount){
         window.healthAmount = amount;
         keyboardEffect.setHealthBar(amount);
     }
 }
 
 function framerate(fps) {
-    if (fps != window.fps) {
+    if(!settings.getFPS())
+        fps = -1;
+
+    if(fps != window.fps) {
         window.fps = fps;
         keyboardEffect.setFrameRate(fps);
     }
+    
 }
 
 /** Checks the connection to Razer Chroma SDK */
@@ -90,6 +100,7 @@ function checkData() {
 }
 
 $(function () {
+    settings.init();
     checkConnectionToGTA();
     checkChromaSDKConnection();
     setInterval(function () {
